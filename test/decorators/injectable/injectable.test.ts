@@ -1,6 +1,6 @@
 import { Container } from '../../../src/index'
-import { CarService } from './car.service'
-import { GarageService } from './garage.service'
+import { CarService } from './services/car.service'
+import { GarageService } from './services/garage.service'
 
 describe('Injectable Decorator', () => {
   test('should inject dependencies to the provider', () => {

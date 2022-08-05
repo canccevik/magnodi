@@ -1,4 +1,4 @@
-import { Injectable } from '../../../src/decorators'
+import { Injectable } from '../../../../src/decorators'
 
 @Injectable()
 export class CarService {

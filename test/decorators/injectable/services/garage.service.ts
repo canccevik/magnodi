@@ -1,5 +1,5 @@
 import { CarService } from './car.service'
-import { Injectable } from '../../../src/decorators'
+import { Injectable } from '../../../../src/decorators'
 
 @Injectable()
 export class GarageService {
