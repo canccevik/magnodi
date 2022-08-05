@@ -1,5 +1,5 @@
-import { Container } from '../src/index'
-import { UserService } from './utils/services'
+import { Container } from '../../src/index'
+import { UserService } from './user.service'
 
 describe('Container Class', () => {
   beforeEach(() => Container.providers.clear())
