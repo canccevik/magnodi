@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 
 import { ProviderAlreadyExistsError, ProviderNotFoundError } from './errors'
-import { IConstructable, IContainer, IProvider } from './interfaces'
+import { IConstructable, IContainer } from './interfaces'
 
 class Container implements IContainer {
   providers = new Map<string, unknown>()
@@ -28,17 +28,17 @@ class Container implements IContainer {
     return matchedProvider
   }
 
-  provide(provider: IProvider): void {
-    const isProviderExists = this.providers.get(provider.token)
+  provide(token: string, value: IConstructable): void {
+    const isProviderExists = this.providers.get(token)
 
     if (isProviderExists) {
-      throw new ProviderAlreadyExistsError(provider.token)
+      throw new ProviderAlreadyExistsError(token)
     }
 
-    const providerInstance = new provider.value() as object
+    const providerInstance = new value() as object
 
-    this.providers.set(provider.token, providerInstance)
-    Reflect.defineMetadata('token', provider.value.name, providerInstance)
+    this.providers.set(token, providerInstance)
+    Reflect.defineMetadata('token', value.name, providerInstance)
   }
 }
 

@@ -9,7 +9,7 @@ describe('Container Class', () => {
   })
 
   test('should provide the provider', () => {
-    Container.provide({ token: 'user-service', value: UserService })
+    Container.provide('user-service', UserService)
 
     const userService = Container.providers.get('user-service') as UserService
 
@@ -19,7 +19,7 @@ describe('Container Class', () => {
 
   test('should throw error when provide any provider with existing token', () => {
     const provideUserService = () => {
-      Container.provide({ token: 'user-service', value: UserService })
+      Container.provide('user-service', UserService)
     }
 
     provideUserService()
@@ -28,7 +28,7 @@ describe('Container Class', () => {
   })
 
   test('should resolve the provider by token', () => {
-    Container.provide({ token: 'user-service', value: UserService })
+    Container.provide('user-service', UserService)
 
     const userService = Container.resolve<UserService>('user-service')
 
@@ -45,7 +45,7 @@ describe('Container Class', () => {
   })
 
   test('should resolve the provider by passing provider', () => {
-    Container.provide({ token: 'user-service', value: UserService })
+    Container.provide('user-service', UserService)
 
     const userService = Container.resolve<UserService>(UserService)
 
