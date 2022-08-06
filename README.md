@@ -18,18 +18,10 @@
 Using npm:
 
 ```js
-npm install magnodi reflect-metadata
+npm install magnodi
 ```
 
-Import the reflect-metadata package at the first line of your application:
-
-```js
-import 'reflect-metadata'
-
-// your code comes here after you imported the reflect-metadata package
-```
-
-As a last step, you need to enable emitting decorator metadata in your Typescript config. Add these two lines to your tsconfig.json file under the compilerOptions key:
+You need to enable emitting decorator metadata in your Typescript config. Add these two lines to your tsconfig.json file under the compilerOptions key:
 
 ```js
 "emitDecoratorMetadata": true,
