@@ -3,19 +3,10 @@ import { IConstructable } from '../interfaces'
 
 export function Inject(token?: string) {
   return function (target: object, propertyKey: string | symbol) {
-    if (token) {
-      Object.defineProperty(target, propertyKey, {
-        get: () => container.resolve(token),
-        enumerable: true,
-        configurable: true
-      })
-      return
-    }
-
-    const provider: IConstructable = Reflect.getMetadata('design:type', target, propertyKey)
+    const providerType: IConstructable = Reflect.getMetadata('design:type', target, propertyKey)
 
     Object.defineProperty(target, propertyKey, {
-      get: () => container.resolve(provider),
+      get: () => (token ? container.resolve(token) : container.resolve(providerType)),
       enumerable: true,
       configurable: true
     })
