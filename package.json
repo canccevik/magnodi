@@ -1,11 +1,18 @@
 {
-  "name": "magno-di",
-  "version": "0.0.1",
-  "description": "",
+  "name": "magnodi",
+  "version": "1.0.2",
+  "description": "💉A simple dependency injection package for TypeScript.",
   "author": "Can Çevik <mazlumcancevik@gmail.com>",
   "license": "MIT",
-  "keywords": [],
+  "keywords": [
+    "dependency injection",
+    "typescript",
+    "di"
+  ],
   "main": "dist/src/index.js",
+  "files": [
+    "dist/src"
+  ],
   "scripts": {
     "build": "tsc",
     "build:dev": "tsc --watch",
@@ -29,5 +36,8 @@
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
