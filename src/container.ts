@@ -1,9 +1,9 @@
 import 'reflect-metadata'
 
 import { ProviderAlreadyExistsError, ProviderNotFoundError } from './errors'
-import { IConstructable, IContainer } from './interfaces'
+import { IConstructable } from './interfaces'
 
-class Container implements IContainer {
+class Container {
   providers = new Map<string, unknown>()
 
   resolve<T>(token: string): T
