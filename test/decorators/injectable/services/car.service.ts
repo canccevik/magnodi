@@ -2,9 +2,9 @@ import { Injectable } from '../../../../src/decorators'
 
 @Injectable()
 export class CarService {
-  cars = [{ id: 1, brand: 'BMW', model: 'i8' }]
+  public cars = [{ id: 1, brand: 'BMW', model: 'i8' }]
 
-  getCars() {
+  public getCars(): object[] {
     return this.cars
   }
 }

@@ -18,7 +18,7 @@ describe('Container Class', () => {
   })
 
   test('should throw error when provide any provider with existing token', () => {
-    const provideUserService = () => {
+    const provideUserService = (): void => {
       Container.provide('user-service', UserService)
     }
 
@@ -37,7 +37,7 @@ describe('Container Class', () => {
   })
 
   test('should throw error when trying to resolve the provider with nonexistent token', () => {
-    const resolveNonexistentService = () => {
+    const resolveNonexistentService = (): void => {
       Container.resolve<UserService>('user-service')
     }
 
@@ -54,7 +54,7 @@ describe('Container Class', () => {
   })
 
   test('should throw error when trying to resolve the provider by passing nonexistent provider', () => {
-    const resolveNonexistentService = () => {
+    const resolveNonexistentService = (): void => {
       Container.resolve<UserService>(UserService)
     }
 

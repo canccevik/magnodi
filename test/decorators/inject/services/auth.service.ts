@@ -10,7 +10,7 @@ export class AuthService {
   @Inject('admin-service')
   public adminService!: AdminService
 
-  login(username: string, password: string) {
+  public login(username: string, password: string): boolean {
     const user = this.userService.getUserByUsername(username)
 
     if (!user || user.password !== password) {
@@ -19,7 +19,7 @@ export class AuthService {
     return true
   }
 
-  loginAsAdmin(username: string, password: string) {
+  public loginAsAdmin(username: string, password: string): boolean {
     return this.adminService.login(username, password)
   }
 }

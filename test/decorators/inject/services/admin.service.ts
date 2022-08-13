@@ -1,5 +1,5 @@
 export class AdminService {
-  login(username: string, password: string) {
+  public login(username: string, password: string): boolean {
     if (username === 'admin' && password === 'admin') {
       return true
     }

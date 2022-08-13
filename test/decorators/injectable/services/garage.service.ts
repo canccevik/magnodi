@@ -5,7 +5,7 @@ import { Injectable } from '../../../../src/decorators'
 export class GarageService {
   constructor(private carService: CarService) {}
 
-  getCars() {
+  public getCars(): object[] {
     return this.carService.getCars()
   }
 }

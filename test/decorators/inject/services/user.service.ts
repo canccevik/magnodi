@@ -1,14 +1,16 @@
 import { Injectable } from '../../../../src/decorators'
 
+export type User = { id: number; username: string; password: string }
+
 @Injectable()
 export class UserService {
-  users = [{ id: 1, username: 'canccevik', password: 'can123' }]
+  public users: User[] = [{ id: 1, username: 'canccevik', password: 'can123' }]
 
-  getUsers() {
+  public getUsers(): User[] {
     return this.users
   }
 
-  getUserByUsername(username: string) {
+  public getUserByUsername(username: string): User | undefined {
     return this.users.find((user) => user.username === username)
   }
 }
