@@ -4,11 +4,11 @@ import { ProviderAlreadyExistsError, ProviderNotFoundError } from './errors'
 import { IConstructable } from './interfaces'
 
 class Container {
-  providers = new Map<string, unknown>()
+  public providers = new Map<string, unknown>()
 
-  resolve<T>(token: string): T
-  resolve<T>(provider: IConstructable): T
-  resolve<T>(tokenOrProvider: string | IConstructable) {
+  public resolve<T>(token: string): T
+  public resolve<T>(provider: IConstructable): T
+  public resolve<T>(tokenOrProvider: string | IConstructable): T {
     if (typeof tokenOrProvider === 'string') {
       const matchedProvider = this.providers.get(tokenOrProvider)
 
@@ -25,10 +25,10 @@ class Container {
     if (!matchedProvider) {
       throw new ProviderNotFoundError(tokenOrProvider.name)
     }
-    return matchedProvider
+    return matchedProvider as T
   }
 
-  provide(token: string, value: IConstructable): void {
+  public provide(token: string, value: IConstructable): void {
     const isProviderExists = this.providers.get(token)
 
     if (isProviderExists) {

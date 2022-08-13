@@ -3,7 +3,7 @@ import { IConstructable } from '../interfaces'
 import { DependencyIsNotValidError, ProviderAlreadyExistsError } from '../errors'
 
 export function Injectable() {
-  return function (target: IConstructable) {
+  return function (target: IConstructable): void {
     Reflect.defineMetadata('token', target.name, target)
 
     const isProviderExists = container.providers.get(target.name)

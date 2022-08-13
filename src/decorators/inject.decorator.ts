@@ -2,7 +2,7 @@ import { container } from '../container'
 import { IConstructable } from '../interfaces'
 
 export function Inject(token?: string) {
-  return function (target: object, propertyKey: string | symbol) {
+  return function (target: object, propertyKey: string | symbol): void {
     const providerType: IConstructable = Reflect.getMetadata('design:type', target, propertyKey)
 
     Object.defineProperty(target, propertyKey, {
