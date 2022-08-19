@@ -2,9 +2,7 @@
 <img src="https://i.imgur.com/aUFQrKY.jpg" alt="MagnoDI Logo" width="500" height="150"/>
 </p>
 
-<br>
-
-<p align="center">💉A simple dependency injection package for TypeScript.</p>
+<p align="center">💉A lightweight dependency injection package for TypeScript.</p>
 
 ## Features
 
