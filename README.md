@@ -96,5 +96,3 @@ app.printUsers()
 ## License
 
 [MIT](https://github.com/canccevik/magno-di/blob/master/LICENSE)
-
-Copyright (c) 2022 [Can Çevik](https://github.com/canccevik)
