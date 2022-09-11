@@ -1,6 +1,6 @@
 {
   "name": "magnodi",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "💉A simple dependency injection package for TypeScript.",
   "author": "Can Çevik <mazlumcancevik@gmail.com>",
   "license": "MIT",
@@ -37,6 +37,14 @@
   "dependencies": {
     "reflect-metadata": "^0.1.13"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canccevik/magnodi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/canccevik/magnodi/issues"
+  },
+  "homepage": "https://github.com/canccevik/magnodi#readme",
   "publishConfig": {
     "access": "public"
   }
