@@ -1,4 +1,4 @@
-export interface IConstructable<T = unknown> {
-  new (...args: never[]): T
+export interface IConstructable<T = any> {
+  new (...args: any[]): T
   readonly prototype: T
 }
