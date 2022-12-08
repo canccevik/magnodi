@@ -1,44 +1,43 @@
 import 'reflect-metadata'
+import { INJECTABLE_METADATA } from './constants'
 
 import { ProviderAlreadyExistsError, ProviderNotFoundError } from './errors'
-import { IConstructable } from './interfaces'
+import { IConstructable, InjectionToken } from './interfaces'
 
 class Container {
-  public providers = new Map<string, unknown>()
+  public providers = new Map<InjectionToken, unknown>()
 
-  public resolve<T>(token: string): T
-  public resolve<T>(provider: IConstructable): T
-  public resolve<T>(tokenOrProvider: string | IConstructable): T {
-    if (typeof tokenOrProvider === 'string') {
-      const matchedProvider = this.providers.get(tokenOrProvider)
+  public resolve<T>(token: InjectionToken): T {
+    const providerName = (token as IConstructable).name || token
+    const provider = this.providers.get(token) as T
 
-      if (!matchedProvider) {
-        throw new ProviderNotFoundError(tokenOrProvider)
-      }
-      return matchedProvider as T
+    if (!provider) {
+      throw new ProviderNotFoundError(providerName)
     }
-
-    const matchedProvider = Array.from(this.providers.values()).find(
-      (pv) => tokenOrProvider.name === Reflect.getMetadata('token', pv as object)
-    )
-
-    if (!matchedProvider) {
-      throw new ProviderNotFoundError(tokenOrProvider.name)
-    }
-    return matchedProvider as T
+    return provider
   }
 
-  public provide(token: string, value: IConstructable): void {
+  public provide(token: InjectionToken, provider: IConstructable): void {
+    const providerName = (token as IConstructable).name || token
     const isProviderExists = this.providers.get(token)
 
     if (isProviderExists) {
-      throw new ProviderAlreadyExistsError(token)
+      throw new ProviderAlreadyExistsError(providerName)
     }
 
-    const providerInstance = new value() as object
+    const providerDependencies = Reflect.getMetadata(
+      'design:paramtypes',
+      provider
+    ) as IConstructable[]
 
+    const dependencyInstances: IConstructable[] =
+      providerDependencies?.map((dependency) => {
+        const dependencyToken = Reflect.getMetadata(INJECTABLE_METADATA, dependency)
+        return this.resolve(dependencyToken || dependency)
+      }) || []
+
+    const providerInstance = Reflect.construct(provider, dependencyInstances)
     this.providers.set(token, providerInstance)
-    Reflect.defineMetadata('token', value.name, providerInstance)
   }
 }
 

@@ -1,14 +1,13 @@
-import { Inject, Injectable } from '../../../../src/decorators'
+import { Inject, Injectable } from '../../../../src'
 import { AdminService } from './admin.service'
 import { UserService } from './user.service'
 
 @Injectable()
 export class AuthService {
   @Inject()
-  public userService!: UserService
+  private readonly userService!: UserService
 
-  @Inject('admin-service')
-  public adminService!: AdminService
+  constructor(@Inject('admin-service') private readonly adminService: AdminService) {}
 
   public login(username: string, password: string): boolean {
     const user = this.userService.getUserByUsername(username)

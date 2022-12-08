@@ -1,5 +1,7 @@
+import { InjectionToken } from '../interfaces'
+
 export class ProviderAlreadyExistsError extends Error {
-  constructor(providerName: string) {
+  constructor(providerName: InjectionToken) {
     super(`Provider already exists: ${providerName}`)
   }
 }

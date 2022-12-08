@@ -5,7 +5,7 @@ import { GarageService } from './services/garage.service'
 describe('Injectable Decorator', () => {
   test('should inject dependencies to the provider', () => {
     const garageService = Container.resolve<GarageService>(GarageService)
-    const carService = Container.resolve<CarService>(CarService)
+    const carService = Container.resolve<CarService>('car-service')
 
     const cars = garageService.getCars()
 

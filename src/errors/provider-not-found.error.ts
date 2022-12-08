@@ -1,5 +1,7 @@
+import { InjectionToken } from '../interfaces'
+
 export class ProviderNotFoundError extends Error {
-  constructor(providerName: string) {
+  constructor(providerName: InjectionToken) {
     super(`Provider cannot found for ${providerName}`)
   }
 }

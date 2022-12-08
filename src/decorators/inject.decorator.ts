@@ -1,12 +1,20 @@
-import { container } from '../container'
-import { IConstructable } from '../interfaces'
+import { Container } from '../../src'
+import { IConstructable, InjectionToken } from '../interfaces'
 
-export function Inject(token?: string) {
-  return function (target: object, propertyKey: string | symbol): void {
-    const providerType: IConstructable = Reflect.getMetadata('design:type', target, propertyKey)
+export function Inject(token?: InjectionToken): Function {
+  return function (target: object, propertyKey: string | symbol, parameterIndex: number): void {
+    let providerType: IConstructable = Reflect.getMetadata('design:type', target, propertyKey)
+
+    if (!providerType) {
+      providerType = (Reflect.getMetadata('design:paramtypes', target) as IConstructable[]).at(
+        parameterIndex
+      ) as IConstructable
+    }
+
+    const providerInstance = token ? Container.resolve(token) : Container.resolve(providerType)
 
     Object.defineProperty(target, propertyKey, {
-      get: () => (token ? container.resolve(token) : container.resolve(providerType)),
+      get: () => providerInstance,
       enumerable: true,
       configurable: true
     })

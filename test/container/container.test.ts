@@ -1,4 +1,4 @@
-import { Container } from '../../src/index'
+import { Container } from '../../src'
 import { UserService } from './services/user.service'
 
 describe('Container Class', () => {
@@ -45,7 +45,7 @@ describe('Container Class', () => {
   })
 
   test('should resolve the provider by passing provider', () => {
-    Container.provide('user-service', UserService)
+    Container.provide(UserService, UserService)
 
     const userService = Container.resolve<UserService>(UserService)
 
