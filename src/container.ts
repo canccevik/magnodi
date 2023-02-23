@@ -1,6 +1,5 @@
 import 'reflect-metadata'
 import { INJECTABLE_METADATA } from './constants'
-
 import { ProviderAlreadyExistsError, ProviderNotFoundError } from './errors'
 import { IConstructable, InjectionToken } from './interfaces'
 

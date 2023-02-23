@@ -11,7 +11,7 @@ export function Inject(token?: InjectionToken): Function {
       ) as IConstructable
     }
 
-    const providerInstance = token ? Container.resolve(token) : Container.resolve(providerType)
+    const providerInstance = Container.resolve(token || providerType)
 
     Object.defineProperty(target, propertyKey, {
       get: () => providerInstance,
