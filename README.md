@@ -19,6 +19,18 @@ Using npm:
 npm install magnodi
 ```
 
+Using yarn:
+
+```js
+yarn add magnodi
+```
+
+Using pnpm:
+
+```js
+pnpm add magnodi
+```
+
 You need to enable emitting decorator metadata in your Typescript config. Add these two lines to your tsconfig.json file under the compilerOptions key:
 
 ```js
