@@ -1,4 +1,3 @@
-export interface IConstructable<T = any> {
+export interface Constructable<T = any> extends Function {
   new (...args: any[]): T
-  readonly prototype: T
 }

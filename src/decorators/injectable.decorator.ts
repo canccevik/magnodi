@@ -1,5 +1,5 @@
 import { Container } from '../../src'
-import { IConstructable, InjectionToken } from '../interfaces'
+import { Constructable, InjectionToken } from '../interfaces'
 import { INJECTABLE_METADATA } from '../constants'
 
 export function Injectable(token?: string): ClassDecorator {
@@ -7,6 +7,6 @@ export function Injectable(token?: string): ClassDecorator {
     if (token) {
       Reflect.defineMetadata(INJECTABLE_METADATA, token, target)
     }
-    Container.provide((token || target) as InjectionToken, target as IConstructable)
+    Container.provide((token || target) as InjectionToken, target as Constructable)
   }
 }

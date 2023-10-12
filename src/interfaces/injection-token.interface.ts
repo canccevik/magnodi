@@ -1,3 +1,3 @@
-import { IConstructable } from './constructable.interface'
+import { Constructable } from './constructable.interface'
 
-export type InjectionToken = string | IConstructable
+export type InjectionToken = string | Constructable
