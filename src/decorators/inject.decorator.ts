@@ -1,5 +1,5 @@
 import { Container } from '../../src'
-import { Constructable, InjectionToken } from '../interfaces'
+import { Constructable, InjectionToken } from '../types'
 
 export function Inject(token?: InjectionToken): Function {
   return function (target: object, propertyKey: string | symbol, parameterIndex: number): void {
