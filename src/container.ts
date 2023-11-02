@@ -1,5 +1,5 @@
 import { INJECTABLE_METADATA } from './constants'
-import { Constructable, InjectionToken } from './interfaces'
+import { Constructable, InjectionToken } from './types'
 
 class ContainerHost {
   public providers = new Map<InjectionToken, unknown>()
