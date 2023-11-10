@@ -1,4 +1,4 @@
-import { Container } from '../../src'
+import { Container } from '../container'
 import { Constructable, InjectionToken } from '../types'
 
 export function Inject(token?: InjectionToken): Function {
